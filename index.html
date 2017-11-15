@@ -17,7 +17,6 @@
         var index = destination.length - 1;
         while(index >= 0){
           var tweet = destination[index];
-          //var $tweet = $('<div></div>');
           var $tweet = $('<tr></tr>');
           var prettyDate = tweet.created_at.getMonth().toString().padStart(2, '0')
                             + '-'
@@ -46,27 +45,18 @@
           }, 500);
         });
         $('.user').on('click', 'button', function() {
-          //alert($(this).attr('class'));
           clearInterval(intervalId);
           var user = $(this).attr('class');
           $('.master_feed').html('');
           intervalId = setInterval(function() {
             printTweets(streams.users[user]);
             }, 500);
-          /*
-          var appendLocation = ('.master_feed');
-          appendLocation.append('<div class="subtweets"></div>');
-          for(var i = 0; i < streams.users[user].length; i++)
-            appendLocation.append('<div>' + streams.users[user][i].message + '</div>');
-          */
         });
       };
       $(document).ready(function() {
         intervalId = setInterval(function() {
           printTweets(streams.home);
         }, 500);
-        //printTweets(streams.home);
-
       });
 
     </script>
